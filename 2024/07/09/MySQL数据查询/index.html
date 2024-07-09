@@ -1,0 +1,468 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>MySQL数据查询 | NING / MiRACLE</title><meta name="author" content="MIRACLE"><meta name="copyright" content="MIRACLE"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#FFA500"><meta name="description" content="MySQL数据查询 DQL  全称为Data Query Language(数据查询语言)，用来查询数据库表中的记录    关键字：SELECT   语法： 基本查询:  select 字段列表 from 表名列表    查询多个字段：  select 字段,字段2,字段3 from 表名；    1select username, password from tab_emp;   查询所有字段（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL数据查询">
+<meta property="og:url" content="http://example.com/2024/07/09/MySQL%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2/index.html">
+<meta property="og:site_name" content="NING &#x2F; MiRACLE">
+<meta property="og:description" content="MySQL数据查询 DQL  全称为Data Query Language(数据查询语言)，用来查询数据库表中的记录    关键字：SELECT   语法： 基本查询:  select 字段列表 from 表名列表    查询多个字段：  select 字段,字段2,字段3 from 表名；    1select username, password from tab_emp;   查询所有字段（">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/06/16/PjTYbh5gWGCInDZ.png">
+<meta property="article:published_time" content="2024-07-09T12:27:28.000Z">
+<meta property="article:modified_time" content="2024-07-09T12:31:34.088Z">
+<meta property="article:author" content="MIRACLE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/06/16/PjTYbh5gWGCInDZ.png"><link rel="shortcut icon" href="https://s2.loli.net/2024/06/16/nvWO9kt2SbyHp6K.webp"><link rel="canonical" href="http://example.com/2024/07/09/MySQL%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/NING" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: MIRACLE","link":"链接: ","source":"来源: NING / MiRACLE","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MySQL数据查询',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-09 20:31:34'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFA500')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFA500')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/06/16/nvWO9kt2SbyHp6K.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2024/06/16/PjTYbh5gWGCInDZ.png')"><nav id="nav"><span id="blog-info"><a href="/" title="NING / MiRACLE"><span class="site-name">NING / MiRACLE</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MySQL数据查询</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-09T12:27:28.000Z" title="发表于 2024-07-09 20:27:28">2024-07-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-09T12:31:34.088Z" title="更新于 2024-07-09 20:31:34">2024-07-09</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>MySQL数据查询</h1>
+<h3 id="DQL">DQL</h3>
+<blockquote>
+<p>全称为Data Query Language(数据查询语言)，用来查询数据库表中的记录</p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>关键字：SELECT</p>
+</li>
+</ul>
+<p>语法：</p>
+<h4 id="基本查询">基本查询:</h4>
+<blockquote>
+<p>select 字段列表 from 表名列表</p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>查询多个字段：</p>
+<blockquote>
+<p>select 字段,字段2,字段3 from 表名；</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select username, password from tab_emp;</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>查询所有字段（通配符）</p>
+<blockquote>
+<p>select * from 表名;</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from tab_emp;</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>设置别名:</p>
+<blockquote>
+<p>select 字段1 [as 别名1],字段2 [as 别名2] from 表名</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name as &quot;姓名&quot;, entrydate as &quot;入职时间&quot; from tab_emp;</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>去除重复记录:</p>
+<blockquote>
+<p>select distinct 字段列表 from 表名;</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct job from tab_emp;</span><br></pre></td></tr></table></figure>
+<h4 id="条件查询：">条件查询：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在基本查询的后面添加</p>
+</li>
+</ul>
+<blockquote>
+<p>where 条件列表</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>比较运算符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>=</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>&lt;&gt;或者 !=</td>
+<td>不等于</td>
+</tr>
+<tr>
+<td>between…and…</td>
+<td>在某个范围之内</td>
+</tr>
+<tr>
+<td>in(…)</td>
+<td>在in之后的列表中的值，多选一</td>
+</tr>
+<tr>
+<td>like 占位符</td>
+<td>模糊匹配(_匹配单个字符，%匹配任意个字符)</td>
+</tr>
+<tr>
+<td>is null</td>
+<td>是null</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>逻辑运算符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>and 或者 &amp;&amp;</td>
+<td>并且(多个条件同时成立)</td>
+</tr>
+<tr>
+<td>or 或者||</td>
+<td>或者(多个条件任意一个成立)</td>
+</tr>
+<tr>
+<td>not 或者 !</td>
+<td>非，不是</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select *from tab_emp where name = &#x27;杨逍&#x27;;</span><br></pre></td></tr></table></figure>
+<h4 id="分组查询：">分组查询：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在条件查询的后面添加</p>
+</li>
+</ul>
+<blockquote>
+<p>group by 分组字段列表</p>
+<p>having 分组后条件列表</p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>聚合函数：</p>
+<ul class="lvl-2">
+<li class="lvl-4">
+<p>将一列数据作为一个整体，进行纵向计算</p>
+</li>
+<li class="lvl-4">
+<p>select 聚合函数(字段列表) from 表名;</p>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>统计数量</td>
+</tr>
+<tr>
+<td>max</td>
+<td>最大值</td>
+</tr>
+<tr>
+<td>min</td>
+<td>最小值</td>
+</tr>
+<tr>
+<td>avg</td>
+<td>平均值</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>求和</td>
+</tr>
+</tbody>
+</table>
+<p>注意：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>null值不参与所有聚合函数运算</p>
+</li>
+<li class="lvl-2">
+<p>统计数量可以使用：count(*) count(字段) count(常量),推荐使用count( * ),</p>
+</li>
+</ul>
+<p>分组字段和聚合函数一起使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 字段列表 from 表名 [where 条件] group by 分组字段名 [having 分组后过滤条件]</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>where 和 having区别:</p>
+<ul class="lvl-2">
+<li class="lvl-4">执行时机不同:
+<ul class="lvl-4">
+<li class="lvl-6">where是分组之间进行过滤，不满足where条件，不参与分组；而having是分组之后对结果进行过滤</li>
+</ul>
+</li>
+<li class="lvl-4">判断条件不同
+<ul class="lvl-4">
+<li class="lvl-6">where不能对聚合函数进行判断，而having可以</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="排序查询">排序查询:</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在基本查询的后面添加</p>
+</li>
+</ul>
+<blockquote>
+<p>order by 排序字段列表</p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>排序方式：</p>
+<ul class="lvl-2">
+<li class="lvl-4">ASC：升序（默认值）</li>
+<li class="lvl-4">DESC：降序</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select *from tab_emp order by  id DESC ;</span><br></pre></td></tr></table></figure>
+<p>多字段排序的情况下，当第一个字段值相同时候，才会根据第二个字段进行排序。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>分页查询：</p>
+<ul class="lvl-2">
+<li class="lvl-4">在基本查询后方添加</li>
+</ul>
+<blockquote>
+<p>limit 分页参数</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 字段列表 from 表名 limit 起始索引,查询记录数</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>起始索引=(页码-1) * 每页展示记录数</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select *from tab_emp limit 0,5;</span><br></pre></td></tr></table></figure>
+<p>函数：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>if(表达式,tvalue,fvalue)：当表达式为true时，取值trvalue；当表达式为false时取值fvalue</p>
+</li>
+<li class="lvl-2">
+<p>case expr when value1 then result1 [when value2 …] [else result] end;</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">use data01;</span><br><span class="line"></span><br><span class="line">select *</span><br><span class="line">from tab_emp</span><br><span class="line">where name like &#x27;%张%&#x27;</span><br><span class="line">  and gender = 1</span><br><span class="line">  and entrydate between &#x27;2000-01-01&#x27; and &#x27;2015-12-31&#x27;</span><br><span class="line">order by update_time desc</span><br><span class="line">limit 0,10;</span><br><span class="line"></span><br><span class="line">select if(gender = 1, &#x27;男性员工&#x27;, &#x27;女性员工&#x27;) as &#x27;性别&#x27;, count(*)</span><br><span class="line">from tab_emp</span><br><span class="line">group by gender;</span><br><span class="line"></span><br><span class="line">select (case job</span><br><span class="line">            when 1 then &#x27;班主任&#x27;</span><br><span class="line">            when 2 then &#x27;讲师&#x27;</span><br><span class="line">            when 3 then &#x27;学工主管&#x27;</span><br><span class="line">            when 4 then &#x27;教研主管&#x27;</span><br><span class="line">            else &#x27;未分配职位&#x27; end) as &#x27;职位&#x27;,</span><br><span class="line">       count(*)</span><br><span class="line">from tab_emp</span><br><span class="line">group by job;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">MIRACLE</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/07/09/MySQL%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2/">http://example.com/2024/07/09/MySQL%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">NING / MiRACLE</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2024/06/16/PjTYbh5gWGCInDZ.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/09/MySQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" title="MySQL多表查询"><img class="cover" src="https://s2.loli.net/2024/06/16/PjTYbh5gWGCInDZ.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MySQL多表查询</div></div></a></div><div class="next-post pull-right"><a href="/2024/07/09/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/" title="MySQL数据库操作"><img class="cover" src="https://s2.loli.net/2024/06/16/PjTYbh5gWGCInDZ.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MySQL数据库操作</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/06/16/nvWO9kt2SbyHp6K.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">MIRACLE</div><div class="author-info__description">Where there is a will,there is a way</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="/ning272423@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">MySQL数据查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DQL"><span class="toc-number">1.0.1.</span> <span class="toc-text">DQL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">基本查询:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2%EF%BC%9A"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">条件查询：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%EF%BC%9A"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">分组查询：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.0.1.4.</span> <span class="toc-text">排序查询:</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/MySQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" title="MySQL多表查询"><img src="https://s2.loli.net/2024/06/16/PjTYbh5gWGCInDZ.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL多表查询"/></a><div class="content"><a class="title" href="/2024/07/09/MySQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" title="MySQL多表查询">MySQL多表查询</a><time datetime="2024-07-09T12:34:53.000Z" title="发表于 2024-07-09 20:34:53">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/MySQL%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2/" title="MySQL数据查询"><img src="https://s2.loli.net/2024/06/16/PjTYbh5gWGCInDZ.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL数据查询"/></a><div class="content"><a class="title" href="/2024/07/09/MySQL%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2/" title="MySQL数据查询">MySQL数据查询</a><time datetime="2024-07-09T12:27:28.000Z" title="发表于 2024-07-09 20:27:28">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/" title="MySQL数据库操作"><img src="https://s2.loli.net/2024/06/16/PjTYbh5gWGCInDZ.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL数据库操作"/></a><div class="content"><a class="title" href="/2024/07/09/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/" title="MySQL数据库操作">MySQL数据库操作</a><time datetime="2024-07-09T12:17:54.000Z" title="发表于 2024-07-09 20:17:54">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/17/%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/" title="方法引用"><img src="https://s2.loli.net/2024/06/16/PjTYbh5gWGCInDZ.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="方法引用"/></a><div class="content"><a class="title" href="/2024/06/17/%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/" title="方法引用">方法引用</a><time datetime="2024-06-17T03:31:26.000Z" title="发表于 2024-06-17 11:31:26">2024-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/17/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Lambda表达式"><img src="https://s2.loli.net/2024/06/16/PjTYbh5gWGCInDZ.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Lambda表达式"/></a><div class="content"><a class="title" href="/2024/06/17/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Lambda表达式">Lambda表达式</a><time datetime="2024-06-17T03:31:08.000Z" title="发表于 2024-06-17 11:31:08">2024-06-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2024/06/16/PjTYbh5gWGCInDZ.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By MIRACLE</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script></div></body></html>
